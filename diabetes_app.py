@@ -1,11 +1,7 @@
 import streamlit as st
 import numpy as np
 import joblib
-try:
-    model = joblib.load('diabetes_model.pkl')
-    scaler = joblib.load('scaler.pkl')
-except FileNotFoundError:
-    st.error("Error: 'diabetes_model.joblib' or 'scaler.joblib' not found. Please ensure they are in the same directory as this script.")
+
 
 #page configuration
 st.set_page_config(
@@ -63,6 +59,10 @@ st.markdown("""
         }
     </style>
 """,unsafe_allow_html=True)
+
+# load model 
+model = joblib.load("diabetes_model.pkl")
+scaler =joblib.load("scaler.pkl")
 
 #App header
 st.markdown('<div class="title"> DiaSense</div>',unsafe_allow_html=True)
